@@ -86,7 +86,6 @@ class App extends React.Component {
                     <div className='flex flex-col xl:flex-row gap-5'>
                         <div className="flex-1">
                         { selectedVideo ? <VideoDetail video={ selectedVideo } /> : null }
-                            
                         </div>
                         <div>
                             <VideoList videos={ videos } onVideoSelect={ this.onVideoSelect } />

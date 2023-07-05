@@ -2,6 +2,9 @@ import React, { useState, useEffect} from 'react';
 
 import youtube from './../api/youtube';
 
+import VideoDescription from './VideoDescription';
+import VideoStatistics from './VideoStatistics';
+
 
 const VideoDetail = ({ video }) => {
 
@@ -38,7 +41,12 @@ const VideoDetail = ({ video }) => {
             />
             <h4 className='text-3xl text-slate-100 font-extrabold my-3'>{video.snippet.title}</h4>
             <p className='text-xl text-teal-500 font-extrabold my-3'>{video.snippet.channelTitle}</p>
-            <p className='text-l text-slate-400'>{videoDetails.snippet.description}</p>
+            <div className='my-3'>
+                <VideoStatistics id={video.id.videoId} likeCount={video.statistics.likeCount} viewCount={video.statistics.viewCount} />
+            </div>
+            <div className='my-3'>
+                <VideoDescription text={videoDetails.snippet.description} />
+            </div>
         </div>
     );
 }
