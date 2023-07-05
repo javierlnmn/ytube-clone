@@ -8,7 +8,7 @@ import VideoStatistics from './VideoStatistics';
 
 const VideoDetail = ({ video }) => {
 
-    const [videoDetails, setVideoDetails] = useState();
+    const [videoDescription, setVideoDescription] = useState('');
 
     const videoId = video.id.videoId
     
@@ -24,8 +24,7 @@ const VideoDetail = ({ video }) => {
                 }
             }
         );
-
-        setVideoDetails(response.data.items[0])
+        setVideoDescription(response.data.items[0].snippet.description)
     }
 
     useEffect(() => {
@@ -45,7 +44,7 @@ const VideoDetail = ({ video }) => {
                 <VideoStatistics id={video.id.videoId} likeCount={video.statistics.likeCount} viewCount={video.statistics.viewCount} />
             </div>
             <div className='my-3'>
-                <VideoDescription text={videoDetails.snippet.description} />
+                <VideoDescription text={videoDescription} />
             </div>
         </div>
     );

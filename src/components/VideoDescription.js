@@ -17,7 +17,7 @@ const VideoDescription = ({ text }) => {
                 {text}
             </p>
             <button 
-                className='transition-all shadow-md hover:shadow-2xl mt-4 py-1 px-3 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-md font-bold' 
+                className='ml-auto transition-all shadow-md hover:shadow-2xl mt-4 py-1 px-3 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-md font-bold' 
                 onClick={displayText}
             >
                 {descriptionDisplayed ? 'See less' : 'See more' }
