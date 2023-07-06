@@ -7,6 +7,7 @@ import CommentReply from './CommentReply';
 const CommentItem = ({ comment }) => {
 
     const [replies, setReplies] = useState([]);
+    const [nextPageToken, setNextPageToken] = useState('');
 
     const commentData = comment.snippet.topLevelComment.snippet;
 
@@ -26,10 +27,12 @@ const CommentItem = ({ comment }) => {
                     parentId: comment.snippet.topLevelComment.id,
                     maxResults: 10,
                     order: 'relevance',
+                    nextPageToken: nextPageToken,
                 }
             }
         );
 
+        setNextPageToken(response.data.nextPageToken);
         createReplies(response.data.items);
 
     }
@@ -41,6 +44,9 @@ const CommentItem = ({ comment }) => {
     const showReplies = () => {
         fetchReplies();
     }
+
+    console.log(nextPageToken);
+
 
     return (
         <div className='my-5 p-5 rounded-md shadow-2xl bg-zinc-700 text-zinc-100 flex flex-col gap-3'>

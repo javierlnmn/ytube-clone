@@ -94,7 +94,9 @@ class App extends React.Component {
                         </div>
                     </div>
 
-                    { selectedVideo ? <VideoComments video={ selectedVideo } /> : null }
+                    { selectedVideo && selectedVideo.statistics.commentCount > 0 ? 
+                        <VideoComments video={ selectedVideo } /> : undefined
+                    }
 
                     </React.Fragment>
                     
