@@ -3,7 +3,7 @@ import './index.css';
 
 import youtube from './api/youtube';
 
-import { SearchBar, VideoDetail, VideoList, Header, Footer } from './components'; 
+import { SearchBar, VideoDetail, VideoList, VideoComments, Header, Footer } from './components'; 
 
 class App extends React.Component {
 
@@ -83,6 +83,8 @@ class App extends React.Component {
                 <div className='mt-7 w-11/12 max-w-screen-2xl my-0 mx-auto justify-center '>
                     <SearchBar onFormSubmit={ this.fetchVideos }/>
 
+                    <React.Fragment>
+
                     <div className='flex flex-col xl:flex-row gap-5'>
                         <div className="flex-1">
                         { selectedVideo ? <VideoDetail video={ selectedVideo } /> : null }
@@ -91,6 +93,11 @@ class App extends React.Component {
                             <VideoList videos={ videos } onVideoSelect={ this.onVideoSelect } />
                         </div>
                     </div>
+
+                    { selectedVideo ? <VideoComments video={ selectedVideo } /> : null }
+
+                    </React.Fragment>
+                    
                 </div>
 
                 <Footer />
