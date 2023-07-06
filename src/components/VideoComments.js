@@ -34,7 +34,12 @@ const VideoComments = ({ video }) => {
         fetchVideoComments();
     }, [video]);
 
-    return (videoComments);
+    return (
+        <div className='mt-3 pt-3 border-t-[1px] border-t-zinc-600'>
+            <h2 className='text-zinc-100 text-xl font-extrabold'>Comments</h2>
+            {videoComments}
+        </div>
+    );
 }
 
 export default VideoComments;

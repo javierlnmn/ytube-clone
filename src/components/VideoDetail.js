@@ -40,14 +40,14 @@ const VideoDetail = ({ video }) => {
 
 
     return (
-        <div className='xl:sticky top-7 mb-3 pb-3 border-b-[1px] xl:border-b-0 border-b-slate-600'>
+        <div className='xl:sticky top-7 mb-3 pb-3 border-b-[1px] xl:border-b-0 border-b-zinc-600'>
             <iframe  
                 title={'videoPlayer'+videoId}
                 className='w-full h-auto aspect-video'
                 src={videoSrc}       
             />
-            <h4 className='text-3xl text-slate-100 font-extrabold my-3'>{video.snippet.title}</h4>
-            <p className='text-xl text-teal-500 font-extrabold my-3'>{video.snippet.channelTitle}</p>
+            <h4 className='text-3xl text-slate-100 font-extrabold my-3  whitespace-pre-wrap'>{video.snippet.title}</h4>
+            <p className='text-xl text-teal-500 font-extrabold my-3  whitespace-pre-wrap'>{video.snippet.channelTitle}</p>
             <div className='my-3'>
                 <VideoStatistics id={video.id.videoId} likeCount={video.statistics.likeCount} viewCount={video.statistics.viewCount} />
             </div>

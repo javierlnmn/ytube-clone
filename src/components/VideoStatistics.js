@@ -2,9 +2,6 @@ import React from 'react';
 
 class VideoStatistics extends React.Component {
 
-    state = {
-        likesPercentage: 0,
-    }
 
     formatNumberAbbreviated(number) {
 
@@ -24,14 +21,8 @@ class VideoStatistics extends React.Component {
 
     }
 
-    componentDidMount() {
-        this.setLikesPercentage();
-    }
-
-    setLikesPercentage = () => {
-        this.setState({
-            likesPercentage: this.props.likeCount * 100 / this.props.viewCount,
-        });
+    getLikesPercentage(likes, views) {
+        return this.props.likeCount * 100 / this.props.viewCount;
     }
 
     render() {
@@ -40,7 +31,7 @@ class VideoStatistics extends React.Component {
 
         const keyframes = `@keyframes ${keyframesName} {
             0% { width: 0; }
-            100% { width: ${this.state.likesPercentage}%; }
+            100% { width: ${this.getLikesPercentage(this.props.likeCount, this.props.viewCount)}%; }
         }`;
 
         return (
@@ -51,7 +42,7 @@ class VideoStatistics extends React.Component {
                         className='bg-teal-600 h-full rounded-full dark:bg-teal-500'
                         style={{
                             animation: '1.5s ease forward',
-                            width: this.state.likesPercentage + '%',
+                            width: this.getLikesPercentage(this.props.likeCount, this.props.viewCount) + '%',
                             animationName: keyframesName,
                         }}
                     />
