@@ -8,6 +8,7 @@ const VideoComments = ({ video }) => {
 
     const videoId = video.id.videoId;
     const [videoComments, setVideoComments] = useState();
+    
 
     const fetchVideoComments = async () => {
 

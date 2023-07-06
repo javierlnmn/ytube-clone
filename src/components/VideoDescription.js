@@ -12,7 +12,7 @@ const VideoDescription = ({ text }) => {
         <div className='p-5 rounded-md shadow-2xl bg-zinc-700'>
             <p className={
                 'text-slate-300 whitespace-pre-wrap overflow-hidden'
-                + (descriptionDisplayed ? ' h-full pb-4' : ' h-12 border-zinc-500 border-b-2 pb-12')
+                + (descriptionDisplayed ? ' h-full pb-4' : ' h-10 border-zinc-500 border-b-2')
             }>
                 {text}
             </p>
