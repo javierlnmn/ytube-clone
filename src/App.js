@@ -28,13 +28,13 @@ class App extends React.Component {
 
         let videoSnippets = response.data.items;
         
-        let videoStatistics = (await this.fetchStatistics(videoSnippets.map((video) => { return video.id.videoId}).toString())).data.items;
+        let videoStatistics = (await this.fetchVideoStatistics(videoSnippets.map((video) => { return video.id.videoId}).toString())).data.items;
 
         this.mergeVideosData(videoSnippets, videoStatistics);
 
     }
 
-    fetchStatistics = async (videoIds) => {
+    fetchVideoStatistics = async (videoIds) => {
         const response = await youtube.get(
             'videos',
             {
@@ -78,9 +78,9 @@ class App extends React.Component {
 
         return (
             <main className='bg-zinc-800' >
-                <Header content={'YouTube pero en verde'} />
+                <Header content={'Green YTube'} />
                 
-                <div className='min-h-screen mt-7 w-11/12 max-w-screen-2xl my-0 mx-auto justify-center '>
+                <div className='mt-7 w-11/12 max-w-screen-2xl my-0 mx-auto justify-center '>
                     <SearchBar onFormSubmit={ this.fetchVideos }/>
 
                     <div className='flex flex-col xl:flex-row gap-5'>

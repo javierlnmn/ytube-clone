@@ -9,6 +9,7 @@ import VideoStatistics from './VideoStatistics';
 const VideoDetail = ({ video }) => {
 
     const [videoDescription, setVideoDescription] = useState('');
+    const [videoDate, setVideoDate] = useState('');
 
     const videoId = video.id.videoId
     
@@ -24,12 +25,19 @@ const VideoDetail = ({ video }) => {
                 }
             }
         );
-        setVideoDescription(response.data.items[0].snippet.description)
+        setVideoDescription(response.data.items[0].snippet.description);
     }
 
     useEffect(() => {
+        let videoDate = new Date(video.snippet.publishedAt).toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+        });
+        setVideoDate(videoDate)
         fetchVideoDetails();
     }, [video]);
+
 
     return (
         <div className='xl:sticky top-7 mb-3 pb-3 border-b-[1px] xl:border-b-0 border-b-slate-600'>
@@ -42,6 +50,11 @@ const VideoDetail = ({ video }) => {
             <p className='text-xl text-teal-500 font-extrabold my-3'>{video.snippet.channelTitle}</p>
             <div className='my-3'>
                 <VideoStatistics id={video.id.videoId} likeCount={video.statistics.likeCount} viewCount={video.statistics.viewCount} />
+            </div>
+            <div className='my-3'>
+                <p className='text-slate-100'>
+                    Published <span className='font-extrabold'>{videoDate}</span>
+                </p>
             </div>
             <div className='my-3'>
                 <VideoDescription text={videoDescription} />

@@ -19,7 +19,7 @@ class VideoStatistics extends React.Component {
         } else if (number >= thousand) {
             return (number / thousand).toFixed(1) + 'k';
         } else {
-            return number.toString();
+            return number;
         }
 
     }

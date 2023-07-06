@@ -7,23 +7,29 @@ const VideoDescription = ({ text }) => {
     const displayText = (event) => {
         setDescriptionDisplayed(!descriptionDisplayed);
     }
-    
+
     return (
         <div className='p-5 rounded-md shadow-2xl bg-zinc-700'>
             <p className={
-                'text-slate-300 whitespace-pre-wrap overflow-hidden grid grid-rows-[0]'
-                + (descriptionDisplayed ? ' grid-rows-1 pb-4' : ' border-zinc-500 border-b-2 pb-16')
+                'text-slate-300 whitespace-pre-wrap overflow-hidden'
+                + (descriptionDisplayed ? ' h-full pb-4' : ' h-12 border-zinc-500 border-b-2 pb-16')
             }>
                 {text}
             </p>
-            <button 
-                className='ml-auto transition-all shadow-md hover:shadow-2xl mt-4 py-1 px-3 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-md font-bold' 
+            <button
+                className='ml-auto transition-all shadow-md hover:shadow-2xl mt-4 py-1 px-3 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-md font-bold'
                 onClick={displayText}
             >
-                {descriptionDisplayed ? 'See less' : 'See more' }
+                {descriptionDisplayed ? 'See less' : 'See more'}
             </button>
         </div>
     );
 }
+
+{/* <div class={'grid transition-[grid-template-rows] duration-300' + (descriptionDisplayed ? ' grid-rows-[1fr]' : ' grid-rows-[0fr] border-zinc-500 border-b-2 pb-16')} id="div">
+    <p class='text-slate-300 whitespace-pre-wrap overflow-hidden'>
+        {text}
+    </p>
+</div> */}
 
 export default VideoDescription;
