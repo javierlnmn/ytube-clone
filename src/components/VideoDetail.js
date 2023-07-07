@@ -12,8 +12,10 @@ const VideoDetail = ({ video }) => {
     const [videoDate, setVideoDate] = useState('');
 
     const videoId = video.id.videoId
+    const channelId = video.snippet.channelId
     
     const videoSrc = `https://www.youtube.com/embed/${videoId}`;
+    const channelSrc = `https://www.youtube.com/channel${channelId}/`
 
     const fetchVideoDetails = async () => {
         const response = await youtube.get(
@@ -38,7 +40,6 @@ const VideoDetail = ({ video }) => {
         fetchVideoDetails();
     }, [video]);
 
-
     return (
         <div className='xl:sticky top-7 mb-3 pb-3 border-b-[1px] xl:border-b-0 border-b-zinc-600'>
             <iframe  
@@ -47,7 +48,7 @@ const VideoDetail = ({ video }) => {
                 src={videoSrc}       
             />
             <h4 className='text-3xl text-slate-100 font-extrabold my-3  whitespace-pre-wrap'>{video.snippet.title}</h4>
-            <p className='text-xl text-teal-500 font-extrabold my-3  whitespace-pre-wrap'>{video.snippet.channelTitle}</p>
+            <p className='text-xl text-teal-500 font-extrabold my-3  whitespace-pre-wrap'><a className='hover:underline' href={channelSrc}>{video.snippet.channelTitle}</a></p>
             <div className='my-3'>
                 <VideoStatistics id={video.id.videoId} likeCount={video.statistics.likeCount} viewCount={video.statistics.viewCount} />
             </div>

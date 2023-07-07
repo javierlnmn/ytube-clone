@@ -29,7 +29,7 @@ const VideoComments = ({ video }) => {
     }
 
     const createComments = (comments) => {
-        setVideoComments(comments.map((comment, id) => <CommentItem key={id} comment={comment} />));
+        setVideoComments(comments.map((comment) => <CommentItem key={comment.id} comment={comment} />));
     }
 
     useEffect(() => {
