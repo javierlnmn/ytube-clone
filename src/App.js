@@ -102,7 +102,7 @@ class App extends React.Component {
                     
                 </div>
 
-                <Footer />
+                <Footer searchVideo={ this.fetchVideos } />
             </main>
         );
     }

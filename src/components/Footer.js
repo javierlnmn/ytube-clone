@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = ({ searchVideo }) => {
+
     return (
         <div className='p-5 bg-zinc-900 mt-28'>
-            <div className='my-6 mx-auto w-10/12 max-w-7xl md:grid grid-cols-2 gap-32'>
+            <div className='my-6 mx-auto w-10/12 max-w-7xl lg:grid grid-cols-2 gap-32'>
                 
                 <p className='text-zinc-500 whitespace-pre-wrap'>
                     Introducing "Green YouTube" (or "ytube-clone") - a React-based application developed for educational purposes.<br/><br/>
@@ -12,11 +13,11 @@ const Footer = () => {
                     By building Green YouTube, the developer gained valuable experience in working with React's component-based architecture, handling asynchronous data fetching, and managing application state. This project not only served as a platform for honing technical skills but also provided insights into the challenges and considerations involved in building modern web applications.<br/><br/>
                     Overall, Green YouTube (ytube-clone) stands as a testament to the developer's commitment to continuous learning and exploration, showcasing their dedication to mastering React and acquiring real-world development skills.
                 </p>
-                <nav className='flex flex-col gap-6 mt-6 md:mt-0'>
-                    <p className='text-teal-500 hover:text-teal-300 font-extrabold text-lg'><a className='hover:underline' href='https://github.com/javierlnmn'>My Github</a></p>
-                    <p className='text-teal-500 hover:text-teal-300 font-extrabold text-lg'><a className='hover:underline' href='https://github.com/javierlnmn'>Despacito</a></p>
-                    <p className='text-teal-500 hover:text-teal-300 font-extrabold text-lg'><a className='hover:underline' href='https://github.com/javierlnmn'>Seek for a random video</a></p>
-                    <p className='text-teal-500 hover:text-teal-300 font-extrabold text-lg'><a className='hover:underline' href='https://github.com/javierlnmn'>First Youtube video</a></p>
+                <nav className='flex flex-col gap-6 mt-6 lg:mt-0'>
+                    <p className='text-teal-500 hover:text-teal-300 font-extrabold text-lg'><a href='https://github.com/javierlnmn' className='hover:underline hover:cursor-pointer'>My Github</a></p>
+                    <p className='text-teal-500 hover:text-teal-300 font-extrabold text-lg'><a onClick={() => {searchVideo('Despacito')}} className='hover:underline hover:cursor-pointer'>Despacito</a></p>
+                    <p className='text-teal-500 hover:text-teal-300 font-extrabold text-lg'><a className='hover:underline hover:cursor-pointer'>Seek for a random video</a></p>
+                    <p className='text-teal-500 hover:text-teal-300 font-extrabold text-lg'><a onClick={() => {searchVideo('Me at the zoo')}} className='hover:underline hover:cursor-pointer'>First Youtube video</a></p>
                 </nav>
             </div>
         </div>
