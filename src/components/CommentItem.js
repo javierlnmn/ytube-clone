@@ -26,7 +26,7 @@ const CommentItem = ({ comment }) => {
                     part: 'snippet',
                     parentId: comment.snippet.topLevelComment.id,
                     maxResults: 10,
-                    order: 'relevance',
+                    order: 'date',
                     pageToken: nextPageToken,
                 }
             }

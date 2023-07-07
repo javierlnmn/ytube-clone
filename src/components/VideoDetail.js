@@ -41,7 +41,7 @@ const VideoDetail = ({ video }) => {
     }, [video]);
 
     return (
-        <div className='xl:sticky top-7 mb-3 pb-3 border-b-[1px] xl:border-b-0 border-b-zinc-600'>
+        <div className='xl:sticky top-7 mb-3 pb-3 xl:mb-5 xl:pb-0  border-b-[1px] xl:border-b-0 border-b-zinc-600'>
             <iframe  
                 title={'videoPlayer'+videoId}
                 className='w-full h-auto aspect-video'
