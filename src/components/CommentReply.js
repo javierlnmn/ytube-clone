@@ -13,7 +13,7 @@ const CommentReply = ({ reply }) => {
     return (
         <div className='p-4 rounded-md shadow-2xl bg-zinc-600 text-zinc-100 flex flex-col gap-3'>
             <div className='flex gap-3 items-center'>
-                <img className='rounded-full w-7 h-auto' src={replyData.authorProfileImageUrl} />
+                <img className='rounded-full w-7 h-auto' src={replyData.authorProfileImageUrl} alt='' />
                 <a className='hover:text-teal-400 transition all' href={replyData.authorChannelUrl}><p className='font-bold'>{replyData.authorDisplayName}</p></a>
                 <p className='text-zinc-400 font-light ml-auto'>
                     {replyPublishedAt}

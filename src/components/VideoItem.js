@@ -8,7 +8,7 @@ const VideoItem = ({ video, onVideoSelect }) => {
             className="mb-5 w-full self-center xl:w-[500px] shadow-lg grid grid-cols-9 rounded-md hover:shadow-2xl cursor-pointer"
             onClick={() => onVideoSelect(video)}
         >
-            <img className="col-span-4 rounded-l-md w-full h-full object-cover" src={video.snippet.thumbnails.medium.url} alt="Thumbnail" />
+            <img className="col-span-4 rounded-l-md w-full h-full object-cover" src={video.snippet.thumbnails.medium.url} alt='' />
             <div className="col-span-5 rounded-md flex flex-col start gap-3 xl:gap-0 p-3">
                 <p className="font-bold cursor-pointer text-gray-100 truncate text-l">{video.snippet.title}</p>
                 <p className="text-xs cursor-pointer text-gray-300 truncate">{video.snippet.channelTitle}</p>
