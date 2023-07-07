@@ -43,19 +43,19 @@ class SearchBar extends React.Component {
                         <p className='text-white text-lg font-semibold'>Please enter something</p>
                     </div>
 
-                    <div className='flex space-x-4 h-12'>
+                    <div className='flex space-x-4 h-10 md:h-12'>
 
                         <div className='flex flex-1 rounded-md overflow-hidden shadow-lg'>
                             <input 
                                 type='text'
                                 placeholder='Search for video...'
                                 onChange={this.handleChange}
-                                className='w-full rounded-md rounded-r-none px-5 outline-2 transition-all' 
+                                className='w-full rounded-md rounded-r-none pl-5 pr-2 outline-2 transition-all' 
                             />
-                            <button type='submit' className='shadow-lg bg-teal-500 hover:bg-teal-600 hover:cursor-pointer text-white px-6 text-lg font-semibold rounded-r-md transition-all'>Search</button>
+                            <button type='submit' className='shadow-lg bg-teal-500 hover:bg-teal-600 hover:cursor-pointer text-white px-4 md:px-6 text-lg font-semibold rounded-r-md transition-all'>Search</button>
                         </div>
 
-                        <button type='reset' className='shadow-lg bg-white px-6 text-lg font-semibold rounded-md'>Clear</button>
+                        <button type='reset' className='shadow-lg bg-white px-4 md:px-6 text-lg font-semibold rounded-md'>Clear</button>
                     </div>
 
                 </form>
