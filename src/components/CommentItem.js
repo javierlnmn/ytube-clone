@@ -7,6 +7,7 @@ import CommentReply from './CommentReply';
 const CommentItem = ({ comment }) => {
 
     const [replies, setReplies] = useState([]);
+    const [shownReplies, setShownReplies] = useState(false);
     const [nextPageToken, setNextPageToken] = useState();
 
     const commentData = comment.snippet.topLevelComment.snippet;
@@ -18,7 +19,6 @@ const CommentItem = ({ comment }) => {
     });
 
     const fetchReplies = async () => {
-
         const response = await youtube.get(
             'comments',
             {
@@ -32,21 +32,32 @@ const CommentItem = ({ comment }) => {
             }
         );
 
-        let isNextPage = false;
-
-        if (response.data.nextPageToken) isNextPage = response.data.nextPageToken;
-
-        setNextPageToken(isNextPage);
-        createReplies(response.data.items);
+        return response;
 
     }
 
-    const createReplies = (replies) => {
-        setReplies(replies.map((reply, id) => <CommentReply key={id} reply={reply} />));
+    const createReplies = (newReplies) => {
+        setReplies(prevReplies => [...prevReplies, ...newReplies.map((reply, id) => <CommentReply key={reply.id} reply={reply} />)]);
     }
 
-    const showReplies = () => {
-        fetchReplies();
+    const showReplies = async () => {
+        const replies = await fetchReplies();
+
+        if (!shownReplies) {
+            setNextPageToken(replies.data.nextPageToken);
+            createReplies(replies.data.items);
+        } else if (shownReplies && nextPageToken) {
+            setNextPageToken(replies.data.nextPageToken);
+            createReplies(replies.data.items);
+        }
+
+        setShownReplies(true);
+    }
+
+    const hideReplies = () => {
+        setReplies([]);
+        setShownReplies(false);
+        setNextPageToken();
     }
 
     return (
@@ -69,14 +80,19 @@ const CommentItem = ({ comment }) => {
                     <path d="M5 10a1 1 0 0 1 .993 .883l.007 .117v9a1 1 0 0 1 -.883 .993l-.117 .007h-1a2 2 0 0 1 -1.995 -1.85l-.005 -.15v-7a2 2 0 0 1 1.85 -1.995l.15 -.005h1z" strokeWidth="0" />
                 </svg>
             </div>
+
             {replies}
-            {comment.snippet.totalReplyCount > 0 ?
-                <button onClick={() => showReplies()} className='mr-auto transition-all shadow-md hover:shadow-2xl mt-4 py-1 px-3 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-md font-bold'>See {nextPageToken ? 'replies' : 'more'} ({comment.snippet.totalReplyCount} in total) </button>
-
-
-                :
-                <p className='text-zinc-400 font-light'>This comment has no replies</p>
-            }
+            <div className='flex gap-2'>
+                {comment.snippet.totalReplyCount > 0 ? (
+                    !shownReplies || nextPageToken ? 
+                        <button onClick={() => showReplies()} className='transition-all shadow-md hover:shadow-2xl mt-4 py-1 px-3 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-md font-bold'>See {shownReplies ? 'more' : 'replies'} ({comment.snippet.totalReplyCount} in total) </button>
+                        :
+                        undefined
+                ) :
+                    <p className='text-zinc-400 font-light'>This comment has no replies</p>
+                }
+                {shownReplies ? <button onClick={() => hideReplies()} className='transition-all shadow-md hover:shadow-2xl mt-4 py-1 px-3 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-md font-bold'>Hide replies</button> : undefined}
+            </div>
         </div>
     );
 }
