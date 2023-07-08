@@ -85,7 +85,7 @@ const CommentItem = ({ comment }) => {
             <div className='flex gap-2'>
                 {comment.snippet.totalReplyCount > 0 ? (
                     !shownReplies || nextPageToken ? 
-                        <button onClick={() => showReplies()} className='transition-all shadow-md hover:shadow-2xl mt-4 py-1 px-3 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-md font-bold'>See {shownReplies ? 'more' : 'replies'} ({comment.snippet.totalReplyCount} in total) </button>
+                        <button onClick={() => showReplies()} className='transition-all shadow-md hover:shadow-2xl mt-4 py-1 px-3 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-md font-bold'>See {shownReplies ? 'more' : 'replies'} ({comment.snippet.totalReplyCount}) </button>
                         :
                         undefined
                 ) :
